@@ -1,11 +1,16 @@
 import oursql
+import yaml
+import os
 
-def connect(db_name):
-	conn = oursql.connect(host="localhost", user="attendanceSystem", passwd="somerandomgiberlish", db=db_name)
+__dir__ = os.path.dirname(__file__)
+config = yaml.safe_load(open(__dir__ + '../config.yaml'))
+
+def connect():
+	conn = oursql.connect(host="localhost", user=config['DB_USER'], passwd=config['DB_PASS'], db=config['DB_NAME'])
 	return conn
 
-def read(db_name):
-	conn = connect(db_name)
+def read():
+	conn = connect()
 	cur = conn.cursor()
 	with cur:
 		cur.execute("select * from users;")
@@ -13,7 +18,7 @@ def read(db_name):
 		print data
 
 def add_user(name, card_id):
-	conn = connect("attendanceSystem")
+	conn = connect()
 	cur = conn.cursor()
 	with cur:
 		cur.execute('''insert into users (id, name, card_id) values (NULL, "%s", "%s");''' % (name, card_id), plain_query=True)
@@ -24,5 +29,5 @@ def save_iStream(card_id, time):
 	with cur:	
 		cur.execute('''insert into istream (id, card_id, time) values (NULL, "%s", "%s");''' % (card_id, time), plain_query=True)
 
-read("attendanceSystem")
+read()
 add_user('Lukas', '2312312')
