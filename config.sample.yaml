@@ -1,3 +1,4 @@
 DB_USER: yourusername
 DB_PASS: yourpassword
 DB_NAME: yourdbname
+DB_HOST: yourdbhost

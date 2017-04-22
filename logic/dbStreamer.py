@@ -6,7 +6,7 @@ __dir__ = os.path.dirname(__file__)
 config = yaml.safe_load(open(__dir__ + '../config.yaml'))
 
 def connect():
-	conn = oursql.connect(host="localhost", user=config['DB_USER'], passwd=config['DB_PASS'], db=config['DB_NAME'])
+	conn = oursql.connect(host=config['DB_HOST'], user=config['DB_USER'], passwd=config['DB_PASS'], db=config['DB_NAME'])
 	return conn
 
 def read():
