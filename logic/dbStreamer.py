@@ -9,13 +9,13 @@ def connect():
 	conn = oursql.connect(host=config['DB_HOST'], user=config['DB_USER'], passwd=config['DB_PASS'], db=config['DB_NAME'])
 	return conn
 
-def read():
+def read(tablename):
 	conn = connect()
 	cur = conn.cursor()
 	with cur:
-		cur.execute("select * from users;")
+		cur.execute("select * from %s;" % (tablename))
 		data = cur.fetchall()
-		print data
+		return data
 
 def add_user(name, card_id):
 	conn = connect()
