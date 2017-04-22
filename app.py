@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import logic.getData as getData
+#import logic.getData as getData
 import logic.dbStreamer as dbStreamer
 
 app = Flask(__name__)
