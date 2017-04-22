@@ -28,6 +28,3 @@ def save_iStream(card_id, time):
 	cur = conn.cursor()
 	with cur:	
 		cur.execute('''insert into istream (id, card_id, time) values (NULL, "%s", "%s");''' % (card_id, time), plain_query=True)
-
-read()
-add_user('Lukas', '2312312')
