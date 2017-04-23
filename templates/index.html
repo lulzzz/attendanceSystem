@@ -1,57 +1,59 @@
+
+
 <!DOCTYPE HTML>
 <html lang="cs">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ tittle }}</title>
-  <!-- font awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <!-- My Stylesheet -->
-  <link rel="stylesheet" src="css/stylesheet.css">
-  <!-- My JS -->
-  <script type="script/javascript" src="js/main.js"></script>
-</head>
-<body>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{{ tittle }}</title>
+      <!-- font awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!-- My Stylesheet -->
+      <link rel="stylesheet" src="css/stylesheet.css">
+      <!-- My JS -->
+      <script type="script/javascript" src="js/main.js"></script>
+   </head>
+   <body>
 
-  <!-- navbar -->
-  <nav class="navbar navbar-inverse bg-faded" style="background-color: #e9671e; border-color: orange;">
-      <a class="navbar-brand" href="#" style="color: #fff">
-        {{ title }}
-      </a>
+      <!-- navbar -->
+      <nav class="navbar navbar-inverse bg-faded" style="background-color: #e9671e; border-color: orange;">
+         <a class="navbar-brand" href="#" style="color: #fff">
+         {{ title }}
+         </a>
+         <a class="navbar-brand" href="https://github.com/s3w3nofficial/attendanceSystem" style="color: #fff;float: right">
+         <i class="fa fa-github fa-lg" aria-hidden="true"></i> GitHub - Source Code
+         </a>
+      </nav>
 
-      <a class="navbar-brand" href="https://github.com/s3w3nofficial/attendanceSystem" style="color: #fff;float: right">
-          <i class="fa fa-github fa-lg" aria-hidden="true"></i> GitHub - Source Code
-      </a>
-  </nav>
+      <div class="container">
+         <h2>Log Table</h2>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th>employee</th>
+                  <th>UID</th>
+                  <th>TIME</th>
+                  <th>Branch</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for inf in info %}
+               <tr>
+                  {% for i in inf %}
+                  <th>{{ i }}</th>
+                  {% endfor %}
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
 
-  <div class="container">
-  <h2>Log Table</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <!--<th>employee</th>-->
-        <th>UID</th>
-        <th>TIME</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for inf in info %}
-    <tr>
-      {% for i in inf %}
-        <th>{{ i }}</th>
-      {% endfor %}
-    </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-</div>
-
-</body>
+   </body>
 </html>
