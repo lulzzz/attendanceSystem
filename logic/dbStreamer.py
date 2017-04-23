@@ -17,6 +17,15 @@ def read(tablename):
 		data = cur.fetchall()
 		return data
 
+def read_data_from_istream(args):
+	conn = connect()
+	cur = conn.cursor()
+	with cur:
+		if args == "card_id":
+			cur.execute("select `card_id` from %s;" % ('istream'))
+		elif args == "time":
+			cur.execute("select `time` from %s;" % ('istream'))
+
 def add_user(name, card_id):
 	conn = connect()
 	cur = conn.cursor()
@@ -31,4 +40,3 @@ def save_iStream(card_id, time):
 
 #add_user("TestUser", "123456789")
 #save_iStream("123456789", "12:45")
-#print(read("istream"))
