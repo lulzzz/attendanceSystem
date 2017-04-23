@@ -22,9 +22,11 @@ def read_data_from_istream(args):
 	cur = conn.cursor()
 	with cur:
 		if args == "card_id":
-			cur.execute("select `card_id` from %s;" % ('istream'))
+			cur.execute("select card_id from istream;")
+			return cur.fetchall()
 		elif args == "time":
-			cur.execute("select `time` from %s;" % ('istream'))
+			cur.execute("select time from istream;")
+			return cur.fetchall()
 
 def add_user(name, card_id):
 	conn = connect()
