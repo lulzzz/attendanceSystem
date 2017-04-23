@@ -1,12 +1,12 @@
 from flask import Flask, render_template, send_from_directory
-#import logic.getData as getData
 import logic.dbStreamer as dbStreamer
+import time
 
 app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def homepage():
-	card_UID = "101010" #This is a testvalue
+	card_UID = dbStreamer.read("istream")
 	return render_template("index.html", title='SimpleAttendanceSystem', cardUID=card_UID)
 
 @app.route('/js/<path:path>')

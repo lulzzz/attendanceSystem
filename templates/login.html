@@ -32,11 +32,16 @@
   </nav>
 
   <div class="container">
-    <div class="row">
-      {% for u in cardUID %}
-    	<div class="col">{{ u }}</div>
-      {% endfor %}
-   </div>
+    <form>
+      <div class="form-group">
+          <label for="UsernameInput">Username</label>
+          <input id="lat" type="text" name="user" class="form-control" id="UsernameInput" placeholder="username">
+      </div>
+      <div class="form-group">
+          <label for="PasswordInput">Password</label>
+          <input id="lat" type="password" name="pass" class="form-control" id="PasswordInput" placeholder="password">
+      </div>
+    </form>
   </div>
 
 </body>

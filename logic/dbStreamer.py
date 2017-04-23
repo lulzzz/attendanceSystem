@@ -24,7 +24,11 @@ def add_user(name, card_id):
 		cur.execute('''insert into users (id, name, card_id) values (NULL, "%s", "%s");''' % (name, card_id), plain_query=True)
 
 def save_iStream(card_id, time):
-	conn = connect("attendanceSystem")
+	conn = connect()
 	cur = conn.cursor()
 	with cur:	
 		cur.execute('''insert into istream (id, card_id, time) values (NULL, "%s", "%s");''' % (card_id, time), plain_query=True)
+
+#add_user("TestUser", "123456789")
+#save_iStream("123456789", "12:45")
+#print(read("istream"))
