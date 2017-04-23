@@ -1,13 +1,14 @@
 from flask import Flask, render_template, send_from_directory
 import logic.dbStreamer as dbStreamer
+import logic.parser as parser 
 import time
 
 app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def homepage():
-	card_UID = dbStreamer.read_data_from_istream("card_id")
-	return render_template("index.html", title='SimpleAttendanceSystem', cardUID=card_UID, T)
+	info = parser.parse(istream = dbStreamer.read("istream"), users = dbStreamer.read("users"))
+	return render_template("index.html", title='SimpleAttendanceSystem', info=info)
 
 @app.route('/js/<path:path>')
 def sendJS(path):

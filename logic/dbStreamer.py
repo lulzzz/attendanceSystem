@@ -33,7 +33,7 @@ def add_user(name, card_id):
 	conn = connect()
 	cur = conn.cursor()
 	with cur:
-		cur.execute('''insert into users (id, name, card_id) values (NULL, "%s", "%s");''' % (name, card_id), plain_query=True)
+		cur.execute('''insert into users (name, card_id) values ("%s", "%s");''' % (name, card_id), plain_query=True)
 
 def save_iStream(card_id):
 	conn = connect()
@@ -67,7 +67,7 @@ def save_iStream(card_id):
 	timestamp = year + month + day + hour + minute + second
 	cur = conn.cursor()
 	with cur:	
-		cur.execute('''insert into istream (id, card_id, time) values (NULL, "%s", "%s");''' % (card_id, timestamp), plain_query=True)
+		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
 
 #add_user("TestUser", "123456789")
 #save_iStream("123456789")

@@ -1,1 +1,1 @@
-__all__ = ["getData", "dbStreamer"]
+__all__ = ["parser", "dbStreamer"]

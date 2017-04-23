@@ -32,21 +32,26 @@
   </nav>
 
   <div class="container">
-    <div class="row">
-
-      {% for uid in cardUID %}
-        {% for u in uid %}
-      	  <div class="col">{{ u }}</div>
-        {% endfor %}
+  <h2>Log Table</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <!--<th>employee</th>-->
+        <th>UID</th>
+        <th>TIME</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for inf in info %}
+    <tr>
+      {% for i in inf %}
+        <th>{{ i }}</th>
       {% endfor %}
-
-      {% for time in Time %}
-        {% for t in time %}
-          <div class="col">{{ t }}</div>
-        {% endfor %}
-      {% endfor %}
-   </div>
-  </div>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>
