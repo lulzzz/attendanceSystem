@@ -25,7 +25,7 @@ def read_data_from_istream(args):
 		if args == "card_id":
 			cur.execute("select card_id from istream;")
 			return cur.fetchall()
-		elif args == "time":
+		if args == "time":
 			cur.execute("select time from istream;")
 			return cur.fetchall()
 

@@ -33,9 +33,18 @@
 
   <div class="container">
     <div class="row">
-      	  <div class="col">{{ uid }}</div>
 
+      {% for uid in cardUID %}
+        {% for u in uid %}
+      	  <div class="col">{{ u }}</div>
+        {% endfor %}
+      {% endfor %}
+
+      {% for time in Time %}
+        {% for t in time %}
           <div class="col">{{ t }}</div>
+        {% endfor %}
+      {% endfor %}
    </div>
   </div>
 
