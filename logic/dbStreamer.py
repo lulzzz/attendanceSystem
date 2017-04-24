@@ -29,6 +29,13 @@ def read_data_from_istream(args):
 			cur.execute("select time from istream;")
 			return cur.fetchall()
 
+def calc_users():
+	conn = connect()
+	cur = conn.cursor()
+	with cur:
+		cur.execute("select count(name) from users")
+		return cur.fetchall()
+
 def compoare_users_and_istream():
 	conn = connect()
         cur = conn.cursor()
@@ -40,17 +47,18 @@ def complete_view_table():
 	conn = connect()
 	cur = conn.cursor()
 	with cur:
-		cur.execute("select name, users.card_id, time from istream join users on istream.card_id=users.card_id order by time")
+		cur.execute("select name, users.card_id, branch, time from istream join users on istream.card_id=users.card_id order by time")
 		data = cur.fetchall()
 	res = {}
 	for row in data:
 		if row[0] not in res:
-			res[row[0]] = {'card_id': row[1], 'times': []}
+			res[row[0]] = {'card_id': row[1], 'branch': row[2], 'times': []}
 	
 	for user in res:
 		for row in data:
 			if row[0] == user:
-				res[row[0]]['times'].append(row[2])
+				res[row[0]]['times'].append(row[3])
+		
 	return res
 
 def return_all_users():
@@ -100,19 +108,6 @@ def save_iStream(card_id):
 	with cur:	
 		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
 
-"""
-users = return_all_users()
-cvt = complete_view_table()
-data = []
-
-for user in users:
-	user = user[0]
-	data.append(str(user))
-	data.append(str(cvt[user]['card_id']))
-	data.append(str(cvt[user]['times'][0]))
-for d in data:
-	print d
-"""
 #add_user("TestUser", "123456789", "Praha")
 #add_user("TestUser1", "987654321", "Pardubice")
 #add_user("TestUser2", "521346789", "Brno")

@@ -1,1 +1,1 @@
-__all__ = ["parser", "dbStreamer"]
+__all__ = ["time_parser", "dbStreamer"]

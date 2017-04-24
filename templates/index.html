@@ -72,13 +72,19 @@
                </tr>
             </thead>
             <tbody>
-               {% for cv in cvt %}
-               <tr>
-                  {% for c in cv %}
-                  <th>{{ c }}</th>
-                  {% endfor %}
-               </tr>
-               {% endfor %}
+              {{ cvt }}
+              {{ cvt[0] }}
+              {% for item in cvt %}
+              <tr>
+                <th>{{ cvt[item][0] }}</th>
+                <th>{{ cvt[item][1] }}</th>
+                <th>{{ cvt[item][2] }}</th>
+                <th>{{ cvt[item][3] }}</th>
+                <th>{{ cvt[item][3] }}</th>
+                <th>{{ cvt[item][3] }}</th>
+                <th>{{ cvt[item][3] }}</th>
+              </tr>
+              {% endfor %}
             </tbody>
          </table>
       </div>
