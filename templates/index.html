@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 <html lang="cs">
    <head>
@@ -33,7 +31,8 @@
       </nav>
 
       <div class="container">
-         <h2>Log Table</h2>
+         <h2 data-toggle="collapse" data-target="#LogTable">Log Table</h2>
+         <div id="LogTable" class="collapse">
          <table class="table">
             <thead>
                <tr>
@@ -48,6 +47,35 @@
                <tr>
                   {% for i in inf %}
                   <th>{{ i }}</th>
+                  {% endfor %}
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+    </div>
+
+      <div class="container">
+         <h2>Complete View Table</h2>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th>employee</th>
+                  <th>UID</th>
+                  <th>Branch</th>
+                  <th>Arrival</th>
+                  <th>Lunch Departure</th>
+                  <th>Lunch Arrival</th>
+                  <th>Departure</th>
+                  <th>Time per Day</th>
+                  <th>Time per Month</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for cv in cvt %}
+               <tr>
+                  {% for c in cv %}
+                  <th>{{ c }}</th>
                   {% endfor %}
                </tr>
                {% endfor %}

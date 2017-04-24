@@ -36,6 +36,13 @@ def compoare_users_and_istream():
                 cur.execute("select name, users.card_id, time, branch from istream join users on istream.card_id=users.card_id")
 		return cur.fetchall()
 
+def complete_view_table():
+	conn = connect()
+	cur = conn.cursor()
+	with cur:
+		cur.execute("select name, users.card_id from istream join users on istream.card_id=users.card_id")
+		return cur.fetchall()
+
 def add_user(name, card_id, branch):
 	conn = connect()
 	cur = conn.cursor()
@@ -76,10 +83,10 @@ def save_iStream(card_id):
 	with cur:	
 		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
 
-add_user("TestUser", "123456789", "Praha")
-add_user("TestUser1", "987654321", "Pardubice")
-add_user("TestUser2", "521346789", "Brno")
-add_user("TestUser3", "752822764", "Holesovice")
+#add_user("TestUser", "123456789", "Praha")
+#add_user("TestUser1", "987654321", "Pardubice")
+#add_user("TestUser2", "521346789", "Brno")
+#add_user("TestUser3", "752822764", "Holesovice")
 
 #save_iStream("123456789")
 #compoare_users_and_istream()

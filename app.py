@@ -1,6 +1,5 @@
 from flask import Flask, render_template, send_from_directory
 import logic.dbStreamer as dbStreamer
-import logic.parser as parser 
 import time
 
 app = Flask(__name__, static_url_path='')
@@ -8,7 +7,8 @@ app = Flask(__name__, static_url_path='')
 @app.route('/')
 def homepage():
 	info = dbStreamer.compoare_users_and_istream()
-	return render_template("index.html", title='SimpleAttendanceSystem', info=info)
+	cvt = dbStreamer.complete_view_table()
+	return render_template("index.html", title='SimpleAttendanceSystem', info=info, cvt=cvt)
 
 @app.route('/js/<path:path>')
 def sendJS(path):
