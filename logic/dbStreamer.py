@@ -53,6 +53,13 @@ def complete_view_table():
 				res[row[0]]['times'].append(row[2])
 	return res
 
+def return_all_users():
+	conn = connect()
+	cur = conn.cursor()
+	with cur:
+		cur.execute("select name from users;")
+		return cur.fetchall()
+
 def add_user(name, card_id, branch):
 	conn = connect()
 	cur = conn.cursor()
@@ -93,6 +100,19 @@ def save_iStream(card_id):
 	with cur:	
 		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
 
+"""
+users = return_all_users()
+cvt = complete_view_table()
+data = []
+
+for user in users:
+	user = user[0]
+	data.append(str(user))
+	data.append(str(cvt[user]['card_id']))
+	data.append(str(cvt[user]['times'][0]))
+for d in data:
+	print d
+"""
 #add_user("TestUser", "123456789", "Praha")
 #add_user("TestUser1", "987654321", "Pardubice")
 #add_user("TestUser2", "521346789", "Brno")
