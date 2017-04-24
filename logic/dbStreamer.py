@@ -40,8 +40,18 @@ def complete_view_table():
 	conn = connect()
 	cur = conn.cursor()
 	with cur:
-		cur.execute("select name, users.card_id from istream join users on istream.card_id=users.card_id")
-		return cur.fetchall()
+		cur.execute("select name, users.card_id, time from istream join users on istream.card_id=users.card_id order by time")
+		data = cur.fetchall()
+	res = {}
+	for row in data:
+		if row[0] not in res:
+			res[row[0]] = {'card_id': row[1], 'times': []}
+	
+	for user in res:
+		for row in data:
+			if row[0] == user:
+				res[row[0]]['times'].append(row[2])
+	return res
 
 def add_user(name, card_id, branch):
 	conn = connect()
