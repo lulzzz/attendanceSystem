@@ -15,6 +15,15 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <!-- My Stylesheet -->
       <link rel="stylesheet" src="css/stylesheet.css">
+      <style>
+        .high {
+          background-color: green;
+        }
+
+        .low {
+          background-color: red;
+        }
+      </style>
       <!-- My JS -->
       <script type="script/javascript" src="js/main.js"></script>
    </head>
@@ -68,6 +77,7 @@
                   <th>Lunch Arrival</th>
                   <th>Departure</th>
                   <th>Time per Day</th>
+                  <th>Time per Week</th>
                   <th>Time per Month</th>
                </tr>
             </thead>
@@ -81,11 +91,15 @@
                 <th>{{ cvt[item][4] }}</th>
                 <th>{{ cvt[item][5] }}</th>
                 <th>{{ cvt[item][6] }}</th>
+                {% if "high" == cvt[item][7][1] %}
+                  <th class="high">{{ cvt[item][7][0] }}</th>
+                {% else %}
+                  <th class="low">{{ cvt[item][7][0] }}</th>
+                {% endif %}
               </tr>
               {% endfor %}
             </tbody>
-         </table>
-      </div>
+         </table>6:40:00
 
    </body>
 </html>
