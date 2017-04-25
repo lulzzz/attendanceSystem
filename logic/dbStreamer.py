@@ -108,6 +108,8 @@ def save_iStream(card_id):
 	with cur:	
 		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
 
+print complete_view_table()
+
 #add_user("TestUser", "123456789", "Praha")
 #add_user("TestUser1", "987654321", "Pardubice")
 #add_user("TestUser2", "521346789", "Brno")

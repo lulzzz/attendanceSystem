@@ -16,3 +16,4 @@ for x in range(4):
 	for y in range(4): 
 		dbStreamer.save_iStream(cards[y]) 
 		print("new db Interaction for user" + str(x) + "time number: " + str(y))
+		time.sleep(3)

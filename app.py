@@ -1,5 +1,6 @@
 from flask import Flask, render_template, send_from_directory
 import logic.dbStreamer as dbStreamer
+import logic.time_parser as tp
 import time
 
 app = Flask(__name__, static_url_path='')
@@ -19,14 +20,15 @@ def homepage():
 
 	for user in users:
         	user = user[0]
-		"""
-		i = 0
-		while len(cvt[user]['times']) > i:
-			data.append(str(cvt[user]['times'][i]))
-			i += 1
-		"""
+
+		time1 = tp.return_time_in_normal_form(str(cvt[user]['times'][0]))
+		time2 = tp.return_time_in_normal_form(str(cvt[user]['times'][1]))
+		time3 = tp.return_time_in_normal_form(str(cvt[user]['times'][2]))
+		time4 = tp.return_time_in_normal_form(str(cvt[user]['times'][3]))
+
 		
-        	data[user_len] = [ str(user), str(cvt[user]['card_id']), str(cvt[user]['branch']), str(cvt[user]['times'][0]), str(cvt[user]['times'][1]), str(cvt[user]['times'][2]), str(cvt[user]['times'][3]) ]
+			
+        	data[user] = [ str(user), str(cvt[user]['card_id']), str(cvt[user]['branch']), time1, time2, time3, time4 ]
 		print data
 
 	return render_template("index.html", title='SimpleAttendanceSystem', info=info, cvt=data, user_len=int(user_len))

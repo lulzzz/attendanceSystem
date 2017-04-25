@@ -72,17 +72,15 @@
                </tr>
             </thead>
             <tbody>
-              {{ cvt }}
-              {{ cvt[0] }}
               {% for item in cvt %}
               <tr>
                 <th>{{ cvt[item][0] }}</th>
                 <th>{{ cvt[item][1] }}</th>
                 <th>{{ cvt[item][2] }}</th>
                 <th>{{ cvt[item][3] }}</th>
-                <th>{{ cvt[item][3] }}</th>
-                <th>{{ cvt[item][3] }}</th>
-                <th>{{ cvt[item][3] }}</th>
+                <th>{{ cvt[item][4] }}</th>
+                <th>{{ cvt[item][5] }}</th>
+                <th>{{ cvt[item][6] }}</th>
               </tr>
               {% endfor %}
             </tbody>
