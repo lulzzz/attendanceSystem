@@ -20,6 +20,8 @@ def homepage():
 
 	for user in users:
         	user = user[0]
+		
+		day_time = tp.calc_day_time(cvt[user]['times'][0], cvt[user]['times'][1], cvt[user]['times'][2], cvt[user]['times'][3])
 
 		time1 = tp.return_time_in_normal_form(str(cvt[user]['times'][0]))
 		time2 = tp.return_time_in_normal_form(str(cvt[user]['times'][1]))
@@ -28,7 +30,7 @@ def homepage():
 
 		
 			
-        	data[user] = [ str(user), str(cvt[user]['card_id']), str(cvt[user]['branch']), time1, time2, time3, time4 ]
+        	data[user] = [ str(user), str(cvt[user]['card_id']), str(cvt[user]['branch']), time1, time2, time3, time4, day_time ]
 		print data
 
 	return render_template("index.html", title='SimpleAttendanceSystem', info=info, cvt=data, user_len=int(user_len))
