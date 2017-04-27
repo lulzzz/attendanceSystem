@@ -53,12 +53,12 @@ def complete_view_table():
 	for row in data:
 		if row[0] not in res:
 			res[row[0]] = {'card_id': row[1], 'branch': row[2], 'times': []}
-	
+
 	for user in res:
 		for row in data:
 			if row[0] == user:
 				res[row[0]]['times'].append(row[3])
-		
+
 	return res
 
 def return_all_users():
@@ -105,10 +105,8 @@ def save_iStream(card_id):
 		second = str(second)
 	timestamp = year + month + day + hour + minute + second
 	cur = conn.cursor()
-	with cur:	
+	with cur:
 		cur.execute('''insert into istream (card_id, time) values ("%s", "%s");''' % (card_id, timestamp), plain_query=True)
-
-print complete_view_table()
 
 #add_user("TestUser", "123456789", "Praha")
 #add_user("TestUser1", "987654321", "Pardubice")
